@@ -28,6 +28,28 @@ public class radioTest {
     }
 
     @Test
+    public void testSetCountStation() {
+        radio radio = new radio(20);
+
+        radio.setCurrentStation(15);
+
+        int expected = 15;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testDefaultCountStation() {
+        radio radio = new radio(20);
+
+        radio.setCurrentStation(22);
+
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void testSetMinAcceptableStation() {
         radio radio = new radio();
 

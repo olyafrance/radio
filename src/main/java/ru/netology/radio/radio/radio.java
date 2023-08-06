@@ -2,17 +2,34 @@ package ru.netology.radio.radio;
 
 public class radio {
 
+    private int minStation = 0;
+    private int maxStation = 9;
     private int currentStation;
+
+    private int minVolume = 0;
+    private int maxVolume = 100;
+    private int currentVolume;
+
+
+    public radio() {
+
+    }
+
+    public radio(int countStation) {
+        maxStation = countStation - 1;
+    }
+
 
     public int getCurrentStation() {
         return currentStation;
     }
 
+
     public void setCurrentStation(int currentStation) {
-        if (currentStation < 0) {
+        if (currentStation < minStation) {
             return;
         }
-        if (currentStation > 9) {
+        if (currentStation > maxStation) {
             return;
         }
 
@@ -20,46 +37,45 @@ public class radio {
     }
 
     public void setNextStation() {
-        if (currentStation != 9) {
+        if (currentStation != maxStation) {
             currentStation++;
         } else {
-            currentStation = 0;
+            currentStation = minStation;
         }
 
     }
 
     public void setPrevStation() {
-        if (currentStation != 0) {
+        if (currentStation != minStation) {
             currentStation--;
         } else {
-            currentStation = 9;
+            currentStation = maxStation;
         }
     }
 
-    private int currentVolume;
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume < 0) {
+        if (currentVolume < minVolume) {
             return;
         }
-        if (currentVolume > 100) {
+        if (currentVolume > maxVolume) {
             return;
         }
         this.currentVolume = currentVolume;
     }
 
     public void increaseVolume() {
-        if (currentVolume != 100) {
+        if (currentVolume != maxVolume) {
             currentVolume++;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume != 0) {
+        if (currentVolume != minVolume) {
             currentVolume--;
         }
     }
